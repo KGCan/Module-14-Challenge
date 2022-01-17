@@ -1,11 +1,16 @@
-// Defines Routes
+// Define routes modeled after just tech news from module 14 lessons
 const router = require('express').Router();
 
-const userRoutes = require('./api/user-routes.js');
-const postRoutes = require('./api/post-routes');
-const commentRoutes = require('./api/comment-routes');
+const apiRoutes = require('./api');
+const homeRoutes = require('./home-routes');
+const dashboardRoutes = require('./dashboard-routes');
 
-router.use('/users', userRoutes);
-router.use('/sightings', postRoutes);
+router.use('/api', apiRoutes);
+router.use('/', homeRoutes);
+router.use('/dashboard', dashboardRoutes);
+
+router.use((req, res) => {
+    res.status(404).end();
+});
 
 module.exports = router;
