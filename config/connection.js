@@ -1,5 +1,5 @@
 // Require the sequelize package from the library
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 
 require('dotenv').config();
 
