@@ -2,10 +2,9 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
-// Get route for all posts for homepage
-
 router.get('/', (req, res) => {
-console.log('working');
+console.log(req.session);
+
 Post.findAll({
     attributes: [
        'id',
@@ -30,7 +29,6 @@ Post.findAll({
    })
      .then(dbPostData => {
        const posts = dbPostData.map(post => post.get({ plain: true }));
-
        res.render('homepage', {
          posts,
        loggedIn: req.session.loggedIn
@@ -42,7 +40,24 @@ Post.findAll({
      });
  });
 
-// Get route for single post for homepage
+ router.get('/login', (req, res) => {
+   if (req.session.loggedIn) {
+     res.redirect('/');
+     return;
+   }
+
+   res.render('login');
+ });
+
+ router.get('/signup', (req, res) => {
+   if (req.session.loggedIn) {
+     res.redirect ('/');
+     return;
+   }
+
+   res.render('signup');
+ });
+
  router.get('/post/:id', (req, res) => {
    Post.findOne({
      where: {
@@ -86,26 +101,6 @@ Post.findAll({
        console.log(err);
        res.status(500).json(err);
      });
- });
-
- // Login
- router.get('/login', (req, res) => {
-   if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-   }
-
-   res.render('login');
- });
-
- // Signup
- router.get('/signup', (req, res) => {
-     if (req.session.loggedIn) {
-         res.redirect('/');
-         return;
-     }
-
-     res.render('signup');
  });
 
  module.exports = router;
