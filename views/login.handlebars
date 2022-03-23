@@ -1,18 +1,20 @@
-<div class="column">
-<h2 class="title pb-4">Login:</h2><hr>
-<form class="login-form">
+<div class="card">
+  <div class="card-header">
+    <h2>Login:</h2>
+  </div>
+
+<form class="card-body" id="login-form">
   <div>
-    <label for="email-login">E-mail:</label>
-    <input type="text" id="email-login"/>
+    <label for="username-input-login">Username:</label>
+    <input type="text" id="username-input-login"/>
   </div>
   <div>
-    <label for="password-login">Password:</label>
-    <input type="password" id="password-login" />
+    <label for="password-input-login" class="form-label">Password:</label>
+    <input type="password" id="password-input-login" />
   </div>
   <div>
-    <button type="submit" class="button is-info">Login</button>
-    <a href="/views/signup.handlebars"><button type="button" className="button is-danger">Signup</button></a>
-  </div>
+    <button type="submit" class="btn" id="login-btn">Login:</button>
+    <a href="/views/signup.handlebars">Signup</a>
 </form>
 </div>
 

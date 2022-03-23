@@ -6,48 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Talk!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
-    <link href="/public/css/style.css" rel="style" >
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-<div class="wrapper" >
-    <header>
-      <h1 class="title is-1 has-background-grey-lighter">Tech Talk: A tech blog!</h1>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-           <div class="navbar-menu">
-             <div class="navbar-start">
-               <a href="/" class="navbar-item is-hoverable pt-1">Homepage</a>
-              </div>
-            </div>
 
-            <div class="navbar-menu">
-                <a href="/views/dashboard.handlebars" class="navbar-item is-hoverable pt-1">Dashboard</a>
-            </div>
+<body class="flex-column min-100-vh">
+  <nav class="navbar">
+    <ul>
+      <li class="li-inline nav-item"><a href="/">Homepage</a></li>
+      <li class="li-inline nav-item"><a href="/dashboard">Dashboard</a></li>
+      <li class="li-inline nav-item"><a href="/login">Login</a></li>
+      <li class="li-inline nav-item"><a href="#" id="logout-link">Logout</a></li>
+    </ul>
+  </nav>
+  <header class="hero">
+    <h1 class="app-title"><a href="/">Tech Talk!</a></h1>
+  </header>
 
-<div class="mb-5 pt-3">
-    <a href="/dashboard/create/"><button id="create-post" class="button is-primary is-pulled-right">Create new post</button></a>
-            </div>
-    
-    <h2 class="title pb-4">Dashboard: View your posts</h2><hr>
-    {{#if posts.length}}
-</div>
+  <main class="col-auto">
+    {{{body}}}
+  </main>
 
-{{#each posts as |post|}}
-    {{> post-info post}}
+ <footer class="footer flex-row justify-center">
+            <a href="/dashboard/new/">Create New Post</a>
+            <p><strong>Tech Talk</strong> by <a href="https://github.com/KGCan">Kirsten Canady</a></p>
+    </footer>
 
-        <a href="/dashboard/edit/{{post.id}}"><button class="button mb-5 ml-5 is-warning">Edit Post</button></a>
-    </div>
-{{/each}}
-
-{{else}}
-<h6 class="pb-4 has-text-centered is-italic">You currently do not have any posts, please create new post</h6>
-
-{{/if}}
-
-            <div class="navbar-menu">
-            <a href="/logout" id="logout" class="navbar-item button is-danger">Logout</button>
-            </div>
-    
 </body>
 
 <script src="/public/js/logout.js"></script>
