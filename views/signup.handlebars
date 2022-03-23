@@ -1,28 +1,22 @@
-{{!-- Reviewed --}}
+<div class="card">
+  <div class="card-header">
+    <h2>Sign Up:</h2>
+  </div>
 
-<div class="column">
-<h2 class="title pb-4">create new account:</h2><hr>
-<form class="signup-form">
-  <div>
+  <div id="signup">
+    <form id="signup-form" class="card-body">
+      <div>
     <label for="username-signup">Username:</label>
-    <input type="text" id="username-signup"/>
+    <input type="text" id="username-input-signup"/>
   </div>
   <div>
-    <label for="email-signup">E-mail:</label>
-    <input type="text" id="email-signup" />
+    <label for="password-input-signup">Password:</label>
+    <input type="password" id="password-input-signup" />
   </div>
-    <div>
-    <label for="github-signup">GitHub:</label>
-    <input type="text" id="github-signup" />
+    <button type="submit" id="signup-btn" class="btn">Signup</button>
+    <a href="/login">Login instead</a>
+    </form>
   </div>
-  <div>
-    <label for="password-signup">Password:</label>
-    <input type="password" id="password-signup" />
-  </div>
-  <div>
-    <button type="submit" class="button is-primary">Signup</button>
-  </div>
-</form>
 </div>
 
 <script src="/public/js/signup.js"></script>
