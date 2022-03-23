@@ -3,13 +3,13 @@
 {{> post-info post}}
 
 {{#if loggedIn}}
-<form>
+<form class="comment-form">
   <div>
-    <textarea></textarea>
+    <textarea class="ml-5" name="comment-body"></textarea>
   </div>
 
   <div>
-    <button>Add Comment:</button>
+    <button class="button is-warning ml-5 mb-5" type="submit">Add Comment:</button>
   </div>
   
 </form>
@@ -20,3 +20,4 @@
 {{#if loggedIn}}
 <script src="/public/js/comment.js"></script>
 {{/if}}
+

@@ -1,19 +1,19 @@
 {{!-- reviewed --}}
 
 <section>
-    <a href="/dashboard"> &larr; Back to dashboard</a>
-  <h2>Create new post</h2><hr>
+    <a href="/dashboard" class="is-pulled-right"> &larr; Back to dashboard</a>
+  <h2 class="title">Create new post</h2><hr>
 
-  <form>
+  <form class="new-post-form">
     <div>
-      <label>Title:</label>
+      <label for="post-title">Title:</label>
       <input class="input" type="text" id="post-title" name="post-title" placeholder="New post title here"/>
     </div>
     <div>
-      <label>Post:</label>
-      <input placeholder="New post content here"/>
+      <label for="post-content">Post:</label>
+      <input class="input" type="text" id="post-title" name="post-title" placeholder="New post content here"/>
     </div>
-    <button type="submit">Create post</button>
+    <button type="submit" class="button is-primary is-pulled-right">Create post</button>
   </form>
 </section>
 
