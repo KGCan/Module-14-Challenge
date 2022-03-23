@@ -1,6 +1,8 @@
+// reviewed
+
 const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
-const sequelize = require('../../config/connection');
+const connection = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
 // Get all users
@@ -38,27 +40,27 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    Post.findOne({
-        where: {
-            id: req.params.id
-        },
-        attributes: [
-            'id',
-            'title',
-            'created_at',
-            'post_content'
-        ],
-        include: [
-            {
-                model: User,
-                attributes: ['username', 'github']
-            },
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['username', 'github']
+  Post.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: [
+      'id',
+      'title',
+      'created_at',
+      'post_content'
+    ],
+    include: [
+    {
+      model: User,
+      attributes: ['username', 'github']
+    },
+    {
+      model: Comment,
+      attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+      include: {
+      model: User,
+      attributes: ['username', 'github']
     }
  }
 ]

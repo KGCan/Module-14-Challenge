@@ -1,3 +1,5 @@
+// reviewed
+
 // Define routes modeled after just tech news from module 14 lessons
 const router = require('express').Router();
 

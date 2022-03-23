@@ -1,7 +1,10 @@
+// reviewed
+
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// GET all users
 router.get('/', (req, res) => {
     User.findAll({
         attributes: { exclude: ['password'] }
@@ -13,6 +16,7 @@ router.get('/', (req, res) => {
       });
   });
 
+  // GET single user 
   router.get('/:id', (req, res) => {
     User.findOne({
         attributes: { exclude: ['password']},
@@ -36,7 +40,7 @@ router.get('/', (req, res) => {
         })
         .then(dbUserData => {
           if (!dbUserData) {
-            res.status(404).json({ message: 'No user found with this id' });
+            res.status(404).json({ message: 'Unable to locate a user matching this ID' });
             return;
           }
           res.json(dbUserData);
@@ -46,20 +50,18 @@ router.get('/', (req, res) => {
           res.status(500).json(err);
         });
     });
-
+    // Create (POST) users
     router.post('/', (req, res) => {
         User.create({
           username: req.body.username,
           email: req.body.email,
           password: req.body.password,
-          twitter: req.body.twitter,
           github: req.body.github
         })
         .then(dbUserData => {
           req.session.save(() => {
             req.session.user_id = dbUserData.id;
             req.session.username = dbUserData.username;
-            req.session.twitter = dbUserData.twitter;
             req.session.github = dbUserData.github;
             req.session.loggedIn = true;
         
@@ -68,7 +70,7 @@ router.get('/', (req, res) => {
         });
       });
 
-      // Login
+      // Login (POST)
       router.post('/login', (req, res) => {
         User.findOne({
           where: {
@@ -76,7 +78,7 @@ router.get('/', (req, res) => {
           }
         }).then(dbUserData => {
           if (!dbUserData) {
-            res.status(400).json({ message: 'No user with that email address!' });
+            res.status(400).json({ message: 'No user found matching that E-mail address!' });
             return;
           }
       
@@ -91,7 +93,6 @@ router.get('/', (req, res) => {
             // declare session variables
             req.session.user_id = dbUserData.id;
             req.session.username = dbUserData.username;
-            req.session.twitter = dbUserData.twitter;
             req.session.github = dbUserData.github;
             req.session.loggedIn = true;
       
@@ -100,6 +101,7 @@ router.get('/', (req, res) => {
         });
       });
 
+      // Logout (POST)
       router.post('/logout', (req, res) => {
         if (req.session.loggedIn) {
           req.session.destroy(() => {
@@ -120,7 +122,7 @@ router.get('/', (req, res) => {
         })
           .then(dbUserData => {
             if (!dbUserData[0]) {
-              res.status(404).json({ message: 'No user found with this id' });
+              res.status(404).json({ message: 'No user found matching that ID' });
               return;
             }
             res.json(dbUserData);
@@ -131,6 +133,7 @@ router.get('/', (req, res) => {
           });
       });
 
+      // DELETE
       router.delete('/:id', withAuth, (req, res) => {
         User.destroy({
           where: {
@@ -139,7 +142,7 @@ router.get('/', (req, res) => {
         })
           .then(dbUserData => {
             if (!dbUserData) {
-              res.status(404).json({ message: 'No user found with this id' });
+              res.status(404).json({ message: 'No user found matching that ID' });
               return;
             }
             res.json(dbUserData);
