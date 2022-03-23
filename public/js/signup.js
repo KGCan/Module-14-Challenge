@@ -1,33 +1,21 @@
-// reviewed
-
-async function signupFormHandler(event) {
+const signupFormHandler = async function(event) {
     event.preventDefault();
   
-    const username = document.querySelector('#username-signup').value.trim();
-    const email = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
-    const github = document.querySelector('#github-signup').value.trim();
-  
-    if (username && email && password) {
-      const response = await fetch('/api/users', {
+    const username = document.querySelector('#username-input-signup')
+    const password = document.querySelector('#password-input-signup')
+
+    fetch('/api/user', {
         method: 'post',
         body: JSON.stringify({
-          username,
-          email,
-          github,
-          password
+          username: username.value,
+          password: password.value
         }),
         headers: { 'Content-Type': 'application/json' }
-      });
+      })
+        .then(function() {
+          document.location.replace('/dashboard');
+        })
+        .catch(err => console.log(err));
+};
   
-      // check the response status
-      if (response.ok) {
-        console.log('success');
-        document.location.replace('/dashboard');
-      } else {
-        alert(response.statusText);
-      }
-    }
-}
-  
-document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+document.querySelector('#signup-form').addEventListener('submit', signupFormHandler);
