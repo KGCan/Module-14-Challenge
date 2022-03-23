@@ -13,7 +13,7 @@
 
 <div class="wrapper" >
     <header>
-      <h1 class="title is-1">Tech Talk: A tech blog!</h1>
+      <h1 class="title is-1 has-background-grey-lighter">Tech Talk: A tech blog!</h1>
         <nav class="navbar" role="navigation" aria-label="main navigation">
             {{#if loggedIn}}
 
@@ -24,20 +24,32 @@
             </div>
 
             <div class="navbar-menu">
-                <a href="/dashboard" class="navbar-item is-hoverable pt-1">Dashboard</a>
+                <a href="/views/dashboard.handlebars" class="navbar-item is-hoverable pt-1">Dashboard</a>
             </div>
 
             <div class="navbar-menu">
-                <a href="/dashboard/create" class="navbar-item is-hoverable pt-1 mr-4">Create Post</a>
+                <a href="/views/create-post.handlebars" class="navbar-item is-hoverable pt-1 mr-4">Create Post</a>
             </div>
 
-            <button id="logout" class="button is-danger">Logout</button>
+            <div class="navbar-menu">
+            <a href="/logout" id="logout" class="navbar-item button is-danger">Logout</button>
+            </div>
+
             {{else}}
+            <div class="navbar-menu">
+            <div class="navbar-start"></div>
             <a href="/" class="navbar-item is-hoverable pt-1">Homepage</a>
-            <a href="/login" className="button is-primary">Login</a>
+            </div>
+            </div>
+
+            <div class="navbar-item">
+            <a href="/login" class="button is-info">Login</a>
             {{/if}}
+            </div>
+
         </nav>
     </header>
+</div>
 
     <main>
         {{{ body }}}
@@ -63,7 +75,7 @@
 </div>
 
 {{#if loggedIn}}
-<script src="/public/js/logout.js"></script>
+<script src="/logout"></script>
 {{/if}}
 </body>
 
