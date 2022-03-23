@@ -1,3 +1,5 @@
+{{!-- need to work on styling --}}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,10 +13,10 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
-<div>
+<div className="container" >
     <header>
         <h1>Tech Talk: A tech blog!</h1>
-        <nav>
+        <nav className="navbar navbar-expand-md navbar-dark fixed-top">
             {{#if loggedIn}}
             <a href="/">Homepage</a>
             <a href="/dashboard">Dashboard</a>
@@ -22,7 +24,7 @@
             <button id="logout">Logout</button>
             {{else}}
             <a>Homepage</a>
-            <a href="/login">Login</a>
+            <a href="/login" className="button is-primary">Login</a>
             {{/if}}
         </nav>
     </header>
