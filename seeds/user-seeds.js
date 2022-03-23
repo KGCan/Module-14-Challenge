@@ -10,6 +10,12 @@ const userData = [
         email: "kirsten@pacificdraftworks.com",
         password: "12345",
     },
+    {
+        username: "CCan",
+        github: "CCan",
+        email: "CCan@gmail.com",
+        password: "12345",
+    },
 ]
 
 const starterUsers = () => User.bulkCreate(userData);
