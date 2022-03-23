@@ -1,3 +1,5 @@
+// reviewed
+
 const starterPosts = require("./post-seeds");
 const starterUsers = require("./user-seeds");
 const starterComments = require("./comment-seeds");
