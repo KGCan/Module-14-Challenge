@@ -20,8 +20,8 @@ router.put('/:id', withAuth, (req, res) => {
           id: req.params.id
         }
       })
-      .then(dbPostData => {
-        if (dbPostData >0) {
+      .then(affectedRows => {
+        if (affectedRows >0) {
           res.status(200).end();
         } else {
           res.status(404).end();
@@ -38,8 +38,8 @@ router.put('/:id', withAuth, (req, res) => {
         id: req.params.id
       }
     })
-      .then(dbPostData => {
-        if (dbPostData >0) {
+      .then(affectedRows => {
+        if (affectedRows >0) {
           res.status(200).end();
         } else {
         res.status(404).end();

@@ -45,6 +45,12 @@ Model-View-Controller (MVC) Challenge: Tech Blog
 
 # Challenge completed using:
 
+- Express-Handlebars
+- MySQL2
+- Sequelize
+- Express-Sessions
+- BCrypt
+- Heroku
 
 # GitHub Repository URL:
 
@@ -52,11 +58,16 @@ https://github.com/KGCan/Module-14-Challenge.git
 
 # Website URL:
 
-
+https://git.heroku.com/module-14-challenge-tech-blog.git
 
 # Screenshot:
 
 
 
  ## Resources Used to complete the project:
+
+ - Module 14 lesson plans
+ - Just tech news homework
+ - 
+
 
