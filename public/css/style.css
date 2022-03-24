@@ -2,8 +2,8 @@
   --first: white;
   --second: beige;
   --third: grey;
-  --fourth: rgb(83, 72, 72);
-  --fifth: rgb(51, 50, 50);
+  --fourth: rgb(41, 177, 131);
+  --fifth: rgb(10, 93, 104);
   --border-radius: 0.3rem;
 }
 
@@ -51,6 +51,10 @@ a {
   
 p {
   font-size: 1.5rem;
+}
+
+footer p {
+  color: var(--third);
 }
 
 input {
