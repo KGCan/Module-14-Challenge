@@ -3,16 +3,16 @@ const { User } = require('../../models');
 
     // Create (POST) users
     router.post('/', (req, res) => {
-        User.create({
-          username: req.body.username,
-          password: req.body.password
-        })
+      User.create({
+        username: req.body.username,
+        password: req.body.password
+      })
         .then(dbUserData => {
           req.session.save(() => {
             req.session.userId = dbUserData.id;
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
-        
+    
             res.json(dbUserData);
           });
         })
@@ -20,7 +20,7 @@ const { User } = require('../../models');
           console.log(err);
           res.status(500).json(err);
         });
-      });
+    });
 
       // Login (POST)
       router.post('/login', (req, res) => {
@@ -30,7 +30,7 @@ const { User } = require('../../models');
           }
         }).then(dbUserData => {
           if (!dbUserData) {
-            res.status(400).json({ message: 'No user found!' });
+            res.status(400).json({ message: 'No user account found!' });
             return;
           }
       
@@ -40,7 +40,7 @@ const { User } = require('../../models');
             res.status(400).json({ message: 'Incorrect password!' });
             return;
           }
-
+          
           req.session.save(() => {
             req.session.userId = dbUserData.id;
             req.session.username = dbUserData.username;
@@ -56,17 +56,17 @@ const { User } = require('../../models');
         if (req.session.loggedIn) {
           req.session.destroy(() => {
             res
-            .status(204)
-            .json({ message: 'You are now logged out!' })
-            .end();
+              .status(204)
+              .json({ message: 'You are now logged out!' })
+              .end();
           });
         } else {
-          res.status(404).end();
+          res.status(400).end();
         }
       });
 
        // DELETE
-      router.delete('/user/:id', (req, res) => {
+       router.delete('/user/:id', (req, res) => {
         User.destroy({
           where: {
             id: req.params.id
@@ -74,7 +74,7 @@ const { User } = require('../../models');
         })
           .then(dbUserData => {
             if (!dbUserData) {
-              res.status(404).json({ message: 'No user found matching that ID' });
+              res.status(404).json({ message: 'No user found with this id' });
               return;
             }
             res.json(dbUserData);
