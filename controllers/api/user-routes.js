@@ -66,7 +66,7 @@ const { User } = require('../../models');
       });
 
        // DELETE
-      router.delete('/:id', withAuth, (req, res) => {
+      router.delete('/:id', (req, res) => {
         User.destroy({
           where: {
             id: req.params.id
