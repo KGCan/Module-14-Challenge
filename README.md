@@ -62,7 +62,11 @@ https://git.heroku.com/module-14-challenge-tech-blog.git
 
 # Screenshot:
 
+![Screengrab1](https://user-images.githubusercontent.com/88002224/159842435-bd479394-d4a2-4620-8ca3-7ac78a3870cf.png)
 
+![Screengrab2](https://user-images.githubusercontent.com/88002224/159842466-b14725e6-70da-424a-856e-e2cda4f6474c.png)
+
+![Screengrab3](https://user-images.githubusercontent.com/88002224/159842532-987498bc-3ad3-4eae-9fa0-aa8904e477a0.png)
 
  ## Resources Used to complete the project:
 
