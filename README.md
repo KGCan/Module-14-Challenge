@@ -48,7 +48,7 @@ Model-View-Controller (MVC) Challenge: Tech Blog
 
 # GitHub Repository URL:
 
-
+https://github.com/KGCan/Module-14-Challenge.git
 
 # Website URL:
 
