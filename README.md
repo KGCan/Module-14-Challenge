@@ -72,6 +72,7 @@ https://git.heroku.com/module-14-challenge-tech-blog.git
 
  - Module 14 lesson plans
  - Just tech news homework
- - 
+ - Stack overflow
+ - Google.com
 
 
