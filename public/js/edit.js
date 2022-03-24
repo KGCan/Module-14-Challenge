@@ -4,20 +4,20 @@ const editFormHandler = async function(event) {
     event.preventDefault();
   
     const title = document.querySelector('input[name="post-title"]').value;
-    const post_content = document.querySelector('textarea[name="post-content"]').value;
+    const body = document.querySelector('textarea[name="post-content"]').value;
 
     fetch(`/api/posts/${postId}`, {
         method: 'PUT',
         body: JSON.stringify({
             title,
-            post_content
+            body
         }),
         headers: {
             'Content-Type': 'application/json'
         }
       });
       
-      document.location.replace('/dashboard/');
+      document.location.replace('/dashboard');
   };
 
   const deleteClickHandler = async function() {
