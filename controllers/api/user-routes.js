@@ -9,7 +9,7 @@ const { User } = require('../../models');
         })
         .then(dbUserData => {
           req.session.save(() => {
-            req.session.user_id = dbUserData.id;
+            req.session.userId = dbUserData.id;
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
         
@@ -42,7 +42,7 @@ const { User } = require('../../models');
           }
 
           req.session.save(() => {
-            req.session.user_id = dbUserData.id;
+            req.session.userId = dbUserData.id;
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
       
@@ -66,7 +66,7 @@ const { User } = require('../../models');
       });
 
        // DELETE
-      router.delete('/:id', (req, res) => {
+      router.delete('/user/:id', (req, res) => {
         User.destroy({
           where: {
             id: req.params.id
@@ -87,72 +87,3 @@ const { User } = require('../../models');
     
     module.exports = router;
     
-
-
-    // GET all users
-// router.get('/', (req, res) => {
-//     User.findAll({
-//         attributes: { exclude: ['password'] }
-//     })
-//       .then(dbUserData => res.json(dbUserData))
-//       .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//       });
-//   });
-
-//   // GET single user 
-//   router.get('/:id', (req, res) => {
-//     User.findOne({
-//         attributes: { exclude: ['password']},
-//         where: {
-//           id: req.params.id
-//         },
-//         include: [
-//             {
-//               model: Post,
-//               attributes: ['id', 'title', 'post_content', 'created_at']
-//             },
-//             {
-//                 model: Comment,
-//                 attributes: ['id', 'comment_text', 'created_at'],
-//                 include: {
-//                   model: Post,
-//                   attributes: ['title']
-//                 }
-//             }
-//           ]
-//         })
-//         .then(dbUserData => {
-//           if (!dbUserData) {
-//             res.status(404).json({ message: 'Unable to locate a user matching this ID' });
-//             return;
-//           }
-//           res.json(dbUserData);
-//         })
-//         .catch(err => {
-//           console.log(err);
-//           res.status(500).json(err);
-//         });
-//     });
-
-
-      // router.put('/:id', withAuth, (req, res) => {
-      //   User.update(req.body, {
-      //       individualHooks: true,
-      //       where: {
-      //           id: req.params.id
-      //     }
-      //   })
-      //     .then(dbUserData => {
-      //       if (!dbUserData[0]) {
-      //         res.status(404).json({ message: 'No user found matching that ID' });
-      //         return;
-      //       }
-      //       res.json(dbUserData);
-      //     })
-      //     .catch(err => {
-      //       console.log(err);
-      //       res.status(500).json(err);
-      //     });
-      // });

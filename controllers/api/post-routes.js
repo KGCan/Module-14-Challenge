@@ -4,10 +4,10 @@ const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, (req, res) => {
   const body = req.body;
-  console.log(req.session.user_id);  
-  Post.create({ ...body, user_id: req.session.user_id })
-      .then(dbPostData => {
-        res.json(dbPostData);
+  console.log(req.session.userId);  
+  Post.create({ ...body, userId: req.session.userId })
+      .then(nePost => {
+        res.json(newPost);
       })
       .catch(err => {
         res.status(500).json(err);
@@ -21,7 +21,7 @@ router.put('/:id', withAuth, (req, res) => {
         }
       })
       .then(dbPostData => {
-        if (!dbPostData >0) {
+        if (dbPostData >0) {
           res.status(200).end();
         } else {
           res.status(404).end();
@@ -39,7 +39,7 @@ router.put('/:id', withAuth, (req, res) => {
       }
     })
       .then(dbPostData => {
-        if (!dbPostData >0) {
+        if (dbPostData >0) {
           res.status(200).end();
         } else {
         res.status(404).end();
